@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: hms-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5433/hms
+    username: hms_user
+    password: hms_password
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  flyway:
+    enabled: true
+  mongodb:
+    uri: mongodb://localhost:27017/hms
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+server:
+  port: 8080
