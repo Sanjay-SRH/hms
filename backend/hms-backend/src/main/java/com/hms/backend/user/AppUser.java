@@ -9,6 +9,7 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+import java.util.List;
 
 @Entity
 @Table(name = "app_user")
@@ -58,6 +59,19 @@ public class AppUser {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<AppRole> roles = new HashSet<>();
+
+    public List<String> roleNames(){
+        return roles.stream().map(AppRole::getName).sorted().toList();
+    }
+
+    public List<String> permissionCodes() {
+        return roles.stream()
+                .flatMap(r -> r.getPermissions().stream())
+                .map(Permission::getCode)
+                .distinct()
+                .sorted()
+                .toList();
+    }
 
     @PreUpdate
     void touch() {
