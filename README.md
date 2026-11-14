@@ -19,4 +19,5 @@ consultation, billing, pharmacy and inpatient management.
    Open http://localhost:5173
 
 ## Status
-Stage 0 (project setup) in progress. Next: authentication, roles, audit log.
+Stage 0 (project setup) completed.
+Stage 1 (authentication, roles, audit log) in progress: login and JWT done. 
